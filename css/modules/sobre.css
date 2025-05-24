@@ -1,0 +1,17 @@
+/* sobre.css - Estilos específicos para seção "Sobre Mim" */
+
+#sobre {
+    background-color: white;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 800px;
+    text-align: center;
+}
+
+#sobre p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+}

@@ -1,0 +1,14 @@
+/* footer.css - Estilos específicos para o rodapé */
+
+footer {
+    background-color: var(--cor-secundaria);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 0;
+}
