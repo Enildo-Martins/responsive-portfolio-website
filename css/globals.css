@@ -2,7 +2,7 @@
     --cor-primaria: #007bff;
     --cor-secundaria: #333;
     --cor-fundo: #f4f7fa;
-    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --fonte-principal: 'Roboto', sans-serif;
 }
 
 * {
@@ -14,11 +14,13 @@
 
 body {
     background-color: var(--cor-fundo);
-    line-height: 1.6;
+    font-family: var(--fonte-principal);
+    color: #444;
 }
 
 h1, h2 {
     color: var(--cor-secundaria);
+    margin-bottom: 1rem;
 }
 
 button {
