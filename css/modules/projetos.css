@@ -1,0 +1,14 @@
+.projeto-card {
+    background-color: white;
+    padding: 1rem;
+    margin: 10px auto;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.projeto-card:hover {
+    transform: translateY(-10px);
+}
