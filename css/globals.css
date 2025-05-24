@@ -1,7 +1,12 @@
 :root {
-    --cor-primaria: #007bff;
-    --cor-secundaria: #333;
+    --cor-branco: #fff;
+    --cor-preto: #222;
+    --cor-primaria: #fff;
+    --cor-secundaria: #2563eb;
     --cor-fundo: #f4f7fa;
+    --cor-cinza: #e4e4e4;
+    --cor-texto: #222;
+    --cor-texto-invertido: #fff;
     --fonte-principal: 'Roboto', sans-serif;
 }
 
@@ -15,17 +20,17 @@
 body {
     background-color: var(--cor-fundo);
     font-family: var(--fonte-principal);
-    color: #444;
+    color: var(--cor-texto);
 }
 
 h1, h2 {
-    color: var(--cor-secundaria);
+    color: var(--cor-preto);
     margin-bottom: 1rem;
 }
 
 button {
-    background-color: var(--cor-primaria);
-    color: white;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-invertido);
     cursor: pointer;
 }
 

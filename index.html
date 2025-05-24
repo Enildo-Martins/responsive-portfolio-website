@@ -11,6 +11,7 @@
         <!-- CSS Modules -->
         <link rel="stylesheet" href="css/modules/header.css">
         <link rel="stylesheet" href="css/modules/home.css">
+        <link rel="stylesheet" href="css/modules/sobre.css">
         <link rel="stylesheet" href="css/modules/projetos.css">
         <link rel="stylesheet" href="css/modules/contato.css">
         <link rel="stylesheet" href="css/modules/contato.css">
@@ -28,7 +29,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="#" id="home-link">Home</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -39,20 +40,34 @@
     <!-- Home -->
     <section id="home">
         <h1>Bem-vindo(a) ao meu Portfólio!</h1>
+        <p class="descricao-home">Desenvolvedor apaixonado por criar experiências digitais incríveis. Explore meus projetos e entre em contato!</p>
     </section>
 
     <!-- Sobre -->
     <section id="sobre">
         <h2>Sobre Mim</h2>
-        <p>Desenvolvedor com interesse em tecnologias front-end.</p>
+        <p>Olá! Me chamo <strong>Enildo Martins de Oliveira Filho</strong> e moro em <strong>Rio Verde - GO</strong>.</p>
+        <p>Sou estudante de <strong>Engenharia de Software</strong> na <strong>UNIRV</strong> e apaixonado por tecnologia.</p>
+        <p>Atualmente, estou focado nos estudos e no desenvolvimento voltado ao <strong>universo front-end</strong>, buscando constante evolução.</p>
     </section>
 
     <!-- Projetos -->
     <section id="projetos">
         <h2>Projetos Recentes</h2>
-        <div class="projeto-card">Projeto 1</div>
-        <div class="projeto-card">Projeto 2</div>
-        <div class="projeto-card">Projeto 3</div>
+        <div class="projetos-grid">
+            <div class="projeto-card">
+                <h3>Projeto 1</h3>
+                <p>Descrição breve do projeto 1.</p>
+            </div>
+            <div class="projeto-card">
+                <h3>Projeto 2</h3>
+                <p>Descrição breve do projeto 2.</p>
+            </div>
+            <div class="projeto-card">
+                <h3>Projeto 3</h3>
+                <p>Descrição breve do projeto 3.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Contato -->
@@ -72,5 +87,74 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+      document.getElementById('home-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      
+      // Sticky header
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if(window.scrollY > 10) {
+          header.classList.add('sticky');
+        } else {
+          header.classList.remove('sticky');
+        }
+      });
+      // Scroll suave e centralizado para os tópicos
+      document.querySelectorAll('nav ul li a').forEach(function(link) {
+        if(link.id !== 'home-link') {
+          link.addEventListener('click', function(e) {
+            const href = link.getAttribute('href');
+            if(href.startsWith('#')) {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if(target) {
+                const header = document.querySelector('header');
+                const headerHeight = header.offsetHeight;
+                const targetTop = target.getBoundingClientRect().top + window.scrollY;
+                // Centraliza a seção na tela, considerando o header
+                const scrollTo = targetTop - headerHeight - (window.innerHeight - target.offsetHeight) / 2 + headerHeight/2;
+                window.scrollTo({ top: scrollTo, behavior: 'smooth' });
+              }
+            }
+          });
+        }
+      });
+      // Ativar underline apenas no link da seção visível
+      const sections = ['#sobre', '#projetos', '#contato'];
+      const navLinks = sections.map(sel => document.querySelector(`nav ul li a[href='${sel}']`));
+      function onScrollActiveSection() {
+        let found = false;
+        for(let i=0; i<sections.length; i++) {
+          const section = document.querySelector(sections[i]);
+          const rect = section.getBoundingClientRect();
+          const header = document.querySelector('header');
+          const headerHeight = header.offsetHeight;
+          if(rect.top <= headerHeight + 40 && rect.bottom > headerHeight + 40) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            navLinks[i].classList.add('active');
+            found = true;
+            break;
+          }
+        }
+        if(!found || window.scrollY < 100) navLinks.forEach(l => l.classList.remove('active'));
+      }
+      window.addEventListener('scroll', onScrollActiveSection);
+      window.addEventListener('resize', onScrollActiveSection);
+      document.addEventListener('DOMContentLoaded', onScrollActiveSection);
+      // Animação de aparecimento da seção Sobre Mim
+      const sobreSection = document.querySelector('#sobre');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            sobreSection.classList.add('visible');
+            observer.unobserve(sobreSection); // Para a animação ocorrer apenas uma vez
+          }
+        });
+      }, { threshold: 0.2 }); // Ajuste o threshold conforme necessário (0 a 1)
+      observer.observe(sobreSection);
+    </script>
 </body>
 </html>

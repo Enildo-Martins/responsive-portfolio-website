@@ -1,26 +1,93 @@
 #projetos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
     padding: 3rem 1rem;
 }
 
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .projeto-card {
-    background-color: white;
-    width: 80%;
-    max-width: 500px;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--cor-branco);
+    min-height: 220px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(30,60,120,0.08);
+    transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s, border 0.3s;
     cursor: pointer;
     text-align: center;
     font-size: 1.1rem;
     font-weight: 500;
+    border: 2.5px solid transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .projeto-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: scale(1.045) rotate(-1.5deg);
+    box-shadow: 0 10px 32px rgba(37,99,235,0.13);
+    border: 2.5px solid var(--cor-secundaria);
+    z-index: 2;
+}
+
+.projeto-card h3 {
+    color: var(--cor-secundaria);
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+}
+
+.projeto-card p {
+    color: #4a5568;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+@media (max-width: 700px) {
+    .projetos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .projeto-card {
+        min-height: 160px;
+        padding: 1.2rem 0.7rem 1rem 0.7rem;
+    }
+    .projeto-card h3 {
+        font-size: 1.1rem;
+    }
+    .projeto-card p {
+        font-size: 0.95rem;
+    }
+}
+
+#projetos h2 {
+    text-align: center;
+    color: var(--cor-preto);
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 2.2rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#projetos h2::after {
+    content: '';
+    display: block;
+    margin: 0.5rem auto 0 auto;
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--cor-secundaria) 60%, #3b82f6 100%);
+    transition: width 0.3s;
 }

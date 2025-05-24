@@ -1,13 +1,12 @@
 footer {
-    background-color: #ffffff;
-    color: #777;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-invertido);
     text-align: center;
     padding: 1.2rem 0;
-    border-top: 2px solid #e4e4e4;
+    border-top: 2px solid var(--cor-cinza);
     font-size: 0.9rem;
     margin-top: 3rem;
 }
-
 
 footer p {
     margin-bottom: 0;
